@@ -101,9 +101,9 @@ function generateSelectKey(nbPlayers){
                         document.querySelector('.select-key-player').innerHTML='<p>1</p>';
                         setTimeout(() => {
                             document.querySelector('.select-key-player').innerHTML="<p>C'est Partit !</p>";
-                            StartGame() 
                             setTimeout(() => {
                                 document.querySelector('.select-key-player').innerHTML="";
+                                StartGame() 
                             },1000)
                         },1000)
                     },1000)
@@ -133,9 +133,21 @@ function StartCountdown(){
 }
 
 function StartGame(){
-    document.querySelector('canvas').style.display = "flex"; //Cela Marche que pour le premier canvas, j'ai essayer pleins de trucs mais rien ne marche, si tu trouve un truc, va check dans inspecter les noms des classes ect
-}
+    const x = document.querySelectorAll('canvas')
+    for (let i = 0; i < x.length; i++) {
+        x[i].style.display = "flex";
+        const context = x[i].getContext('2d')
+        context.beginPath()
+        context.moveTo(0, 0);
+        context.lineTo(1000, 1000);
 
+        context.lineWidth   = 10
+        context.fillStyle = 'rgba(255, 0, 0, 0.5)'
+
+        context.fill();
+        console.log(context)
+    }
+}
 
 // Fonction dans fonction avec if button 3 players ect 
 
