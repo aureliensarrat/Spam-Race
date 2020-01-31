@@ -1,5 +1,7 @@
 /*Screen Changes*/
 
+/*Enlever les ;*/
+
 document.querySelector('.never-play-js').addEventListener('click', () =>
 {
     document.querySelector('.enter-screen').style.display = 'none';
@@ -72,20 +74,68 @@ setTimeout(() => {
 
 /*Number Player Functions*/
 
-let nbPlayers
+let nbPlayers;
+
+let keys = []
+
+let player = 1;
 
 function generateSelectKey(nbPlayers){
     for (let i = 1; i <= nbPlayers; i++){
         let currentHtml = document.querySelector('.player-keys-container').innerHTML;
-        document.querySelector('.player-keys-container').innerHTML=currentHtml + '<div class="player-button ' + 'player'+ i +'"><p>?</p></div>';
-        document.querySelector('.select-key-player').innerHTML='<p>Joueur '+ i +' choisissez votre touche</p>';
-        window.addEventListener("keydown", (i) =>{
-            let key = event.key.toUpperCase();
-            document.querySelector('.player'+i).innerHTML='<p>' + key + '</p>';
-            console.log(key)
-      })
+        document.querySelector('.player-keys-container').innerHTML=currentHtml + '<div class="player-button player'+ i +'"><p>?</p><canvas class="canvas' + i + '" height="10" width="1403"></canvas></div>';
+        document.querySelector('.select-key-player').innerHTML='<p>Joueur '+ player +' choisissez votre touche</p>';
     }
+    window.addEventListener("keydown", (e) =>{
+        keys[keys.length] = e.key.toUpperCase()
+        document.querySelector('.player'+keys.length).innerHTML='<p>' + keys[keys.length - 1] + '</p><canvas class="canvas' + keys.length + '" height="10" width="1403"></canvas>';
+        player++;
+        if(nbPlayers >= player){
+            document.querySelector('.select-key-player').innerHTML='<p>Joueur '+ player +' choisissez votre touche</p>';
+        } else {
+            setTimeout(() => {
+                document.querySelector('.select-key-player').innerHTML='<p>3</p>';
+                setTimeout(() => {
+                    document.querySelector('.select-key-player').innerHTML='<p>2</p>';
+                    setTimeout(() => {
+                        document.querySelector('.select-key-player').innerHTML='<p>1</p>';
+                        setTimeout(() => {
+                            document.querySelector('.select-key-player').innerHTML="<p>C'est Partit !</p>";
+                            StartGame() 
+                            setTimeout(() => {
+                                document.querySelector('.select-key-player').innerHTML="";
+                            },1000)
+                        },1000)
+                    },1000)
+                },1000)
+            }, 0);
+        }
+    })
 }
+
+function StartCountdown(){
+    setTimeout(() => {
+        document.querySelector('.select-key-player').innerHTML='<p>3</p>';
+        setTimeout(() => {
+            document.querySelector('.select-key-player').innerHTML='<p>2</p>';
+            setTimeout(() => {
+                document.querySelector('.select-key-player').innerHTML='<p>1</p>';
+                setTimeout(() => {
+                    document.querySelector('.select-key-player').innerHTML="<p>C'est Partit !</p>";
+                    StartGame() 
+                    setTimeout(() => {
+                        document.querySelector('.select-key-player').innerHTML="";
+                    },1000)
+                },1000)
+            },1000)
+        },1000)
+    }, 0);
+}
+
+function StartGame(){
+    document.querySelector('canvas').style.display = "flex"; //Cela Marche que pour le premier canvas, j'ai essayer pleins de trucs mais rien ne marche, si tu trouve un truc, va check dans inspecter les noms des classes ect
+}
+
 
 // Fonction dans fonction avec if button 3 players ect 
 

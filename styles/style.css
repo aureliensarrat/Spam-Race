@@ -135,13 +135,13 @@ body{
 /*Game-screen*/
 
 .game-screen{
+    height: 90%;
+    width: 90%;
     display: none; /*none*/
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     position: relative;
-    height: 50%;
-    width: 60%;
 }
 
 .select-key-player{
@@ -149,4 +149,35 @@ body{
     justify-content: center;
     align-items: center;
     font-size: 2em;
+}
+
+canvas{
+    display: none;
+    position: absolute;
+    top: 6.8vh;
+    left: 14vh;
+    background: white;
+}
+
+.finish-line{
+    height: 70%;
+    width: 1.2%;
+    background: black;
+    border-radius: 10px;
+}
+
+.player1{
+    position: relative;
+}
+
+.player2{
+    position: relative;
+}
+
+.player3{
+    position: relative;
+}
+
+.player4{
+    position: relative;
 }
