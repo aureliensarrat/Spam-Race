@@ -135,18 +135,10 @@ function StartCountdown(){
 function StartGame(){
     const x = document.querySelectorAll('canvas')
     for (let i = 0; i < x.length; i++) {
+        const context = x[i].getContext('2d')
+        context.fillStyle = 'rgba(255, 0, 0, 0.5)'
+        context.fillRect(50, 50, 300, 160)
+        console.log(context)
         x[i].style.display = "flex";
     }
 }
-
-
-
-
-
-
-/*const context = x[i].getContext('2d')
-        context.fillStyle = 'rgba(255, 0, 0, 0.5)'
-        context.fillRect(50, 50, 300, 160)
-
-        console.log(context)*/
-
