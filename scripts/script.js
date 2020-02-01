@@ -88,7 +88,7 @@ function generateSelectKey(nbPlayers){
     }
     window.addEventListener("keydown", (e) =>{
         keys[keys.length] = e.key.toUpperCase()
-        document.querySelector('.player'+keys.length).innerHTML='<p>' + keys[keys.length - 1] + '</p><canvas class="canvas' + keys.length + '" height="10" width="1403"></canvas>';
+        document.querySelector('.player'+keys.length).innerHTML='<p>' + keys[keys.length - 1] + '</p><canvas class="canvas' + keys.length + '" height="10" width="0"></canvas>';
         player++;
         if(nbPlayers >= player){
             document.querySelector('.select-key-player').innerHTML='<p>Joueur '+ player +' choisissez votre touche</p>';
@@ -136,21 +136,17 @@ function StartGame(){
     const x = document.querySelectorAll('canvas')
     for (let i = 0; i < x.length; i++) {
         x[i].style.display = "flex";
-        const context = x[i].getContext('2d')
-        context.beginPath()
-        context.moveTo(0, 0);
-        context.lineTo(1000, 1000);
-
-        context.lineWidth   = 10
-        context.fillStyle = 'rgba(255, 0, 0, 0.5)'
-
-        context.fill();
-        console.log(context)
     }
 }
 
-// Fonction dans fonction avec if button 3 players ect 
 
-// boucle for = createElement, appendChild, classList.add, innerText
 
-// addEventListener au clavier, recupere valeur selectionné et devient une variable + innerText
+
+
+
+/*const context = x[i].getContext('2d')
+        context.fillStyle = 'rgba(255, 0, 0, 0.5)'
+        context.fillRect(50, 50, 300, 160)
+
+        console.log(context)*/
+
