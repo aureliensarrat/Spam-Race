@@ -133,12 +133,21 @@ function StartCountdown(){
 }
 
 function StartGame(){
-    const x = document.querySelectorAll('canvas')
-    for (let i = 0; i < x.length; i++) {
-        const context = x[i].getContext('2d')
-        context.fillStyle = 'rgba(255, 0, 0, 0.5)'
-        context.fillRect(50, 50, 300, 160)
-        console.log(context)
-        x[i].style.display = "flex";
+    const canvas = document.querySelectorAll('canvas')
+    for (let i = 0; i < canvas.length; i++) {
+        canvas[i].style.display = "flex";
     }
+    window.addEventListener("keydown", () =>{
+        let currentWidth = document.querySelector('.canvas1').innerWidth;
+        document.querySelector('.canvas1').style.width = currentWidth + 500 + "px";
+        console.log(currentWidth)
+    })
 }
+
+/*const context = x[i].getContext('2d')
+        context.fillStyle = 'rgba(255, 0, 0, 0.5)'
+        context.fillRect = (50, 50, 300, 160)
+        console.log(context)
+*/
+
+//1403 witdh
